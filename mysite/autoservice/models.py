@@ -18,7 +18,7 @@ class Automobilis(models.Model):
                                             null=True)
 
     def __str__(self):
-        return f"{self.valst_nr} - {self.vin_kodas}"
+        return f"{self.valst_nr} - {self.vin_kodas} ({self.automobilio_modelis})"
 
 
 class Uzsakymas(models.Model):
