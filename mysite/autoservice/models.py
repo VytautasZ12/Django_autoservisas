@@ -34,8 +34,11 @@ class UzsakymoEilute(models.Model):
     paslauga = models.ForeignKey(to="Paslauga", verbose_name="Paslauga", on_delete=models.SET_NULL, null=True)
     kiekis = models.IntegerField(verbose_name="Kiekis")
 
+    def suma(self):
+        return self.paslauga.kaina * self.kiekis
+
     def __str__(self):
-        return f"{self.uzsakymas} ({self.paslauga} - {self.kiekis})"
+        return f"{self.uzsakymas} ({self.paslauga} - {self.kiekis}: {self.suma()})"
 
 
 class Paslauga(models.Model):
