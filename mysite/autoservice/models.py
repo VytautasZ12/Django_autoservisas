@@ -4,10 +4,28 @@ from django.db import models
 # Create your models here.
 class AutomobilioModelis(models.Model):
     marke = models.CharField(verbose_name="Marke", max_length=100)
-    modelis = models.CharField(verbose_name="Automobilio modelis", max_length=100)
+    modelis = models.CharField(verbose_name="Modelis", max_length=100)
 
 
 class Automobilis(models.Model):
     valst_nr = models.CharField(verbose_name="Valstybinis numeris", max_length=20)
     vin_kodas = models.CharField(verbose_name="VIN kodas", max_length=20)
     kliento_vardas = models.CharField(verbose_name="Klientas vardas", max_length=50)
+    automobilio_modelis = models.ForeignKey(to="AutomobilioModelis", verbose_name="Modelis", on_delete=models.SET_NULL,
+                                            null=True)
+
+
+class Uzsakymas(models.Model):
+    data = models.DateField(verbose_name="Data", auto_now_add=True)
+    automobilis = models.ForeignKey(to="Automobilis", verbose_name="Automobilis", on_delete=models.CASCADE)
+
+
+class UzsakymoEilute(models.Model):
+    uzsakymas = models.ForeignKey(to="Uzsakymas", on_delete=models.CASCADE)
+    paslauga = models.ForeignKey(to="Paslauga", verbose_name="Paslauga", on_delete=models.SET_NULL, null=True)
+    kiekis = models.IntegerField(verbose_name="Kiekis")
+
+
+class Paslauga(models.Model):
+    pavadinimas = models.CharField(verbose_name="Paslaugos pavadinimas", max_length=50)
+    kaina = models.FloatField(verbose_name="Kaina")
