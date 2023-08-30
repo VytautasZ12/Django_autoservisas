@@ -11,7 +11,7 @@ class AutomobilioModelis(models.Model):
 
     class Meta:
         verbose_name = "Automobilio modelis"
-        verbose_name_plural = "Automobilio modelis"
+        verbose_name_plural = "Automobilio modeliai"
 
 
 class Automobilis(models.Model):
@@ -26,7 +26,7 @@ class Automobilis(models.Model):
 
     class Meta:
         verbose_name = "Automobilis"
-        verbose_name_plural = "Automobilis"
+        verbose_name_plural = "Automobiliai"
 
 
 class Uzsakymas(models.Model):
@@ -38,7 +38,7 @@ class Uzsakymas(models.Model):
 
     class Meta:
         verbose_name = "Uzsakymas"
-        verbose_name_plural = "Uzsakymas"
+        verbose_name_plural = "Uzsakymai"
 
 
 class UzsakymoEilute(models.Model):
@@ -54,7 +54,7 @@ class UzsakymoEilute(models.Model):
 
     class Meta:
         verbose_name = "Uzsakymo eilute"
-        verbose_name_plural = "Uzsakymo eilute"
+        verbose_name_plural = "Eilutes"
 
 
 class Paslauga(models.Model):

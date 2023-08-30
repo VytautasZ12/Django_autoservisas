@@ -8,14 +8,18 @@ class AutomobilioModelisAdmin(admin.ModelAdmin):
 
 class AutomobilisAdmin(admin.ModelAdmin):
     list_display = ["kliento_vardas", "automobilio_modelis", "valst_nr", "vin_kodas"]
+    list_filter = ["kliento_vardas", "automobilio_modelis__marke", "automobilio_modelis__modelis"]
+    search_fields = ["valst_nr", "vin_kodas"]
+
+
+class UzsakymasInLIne(admin.TabularInline):
+    model = UzsakymoEilute
+    extra = 0
 
 
 class UzsakymasAdmin(admin.ModelAdmin):
     list_display = ["data", "automobilis"]
-
-
-class UzsakymoEiluteAdmin(admin.ModelAdmin):
-    list_display = ["uzsakymas", "paslauga", "kiekis"]
+    inlines = [UzsakymasInLIne]
 
 
 class PaslaugaAdmin(admin.ModelAdmin):
@@ -26,5 +30,5 @@ class PaslaugaAdmin(admin.ModelAdmin):
 admin.site.register(AutomobilioModelis, AutomobilioModelisAdmin)
 admin.site.register(Automobilis, AutomobilisAdmin)
 admin.site.register(Uzsakymas, UzsakymasAdmin)
-admin.site.register(UzsakymoEilute, UzsakymoEiluteAdmin)
+admin.site.register(UzsakymoEilute)
 admin.site.register(Paslauga, PaslaugaAdmin)
